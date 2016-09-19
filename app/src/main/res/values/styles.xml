@@ -1,0 +1,30 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="CodeFont" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">#212121</item>
+    </style>
+
+    <style name="BtnIniciar" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:background">#4CAF50</item>
+    </style>
+
+    <style name="BtnPausar" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:background">#F44336</item>
+    </style>
+
+    <style name="BtnZerar" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:background">#0277BD</item>
+    </style>
+
+</resources>
