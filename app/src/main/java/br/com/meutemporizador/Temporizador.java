@@ -6,16 +6,14 @@ import android.os.CountDownTimer;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
 
 public class Temporizador extends MainActivity {
 
     private CountDownTimer countDownTimer;
-    private boolean timerHasStarted = false;
+    private boolean timerHasStarted = true;
     private final long interval = 1 * 1000;
-    EditText e;
     Button botao;
     TextView contador;
     int segundosRestantes;
@@ -24,39 +22,34 @@ public class Temporizador extends MainActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_temporizador);
+        int e = getIntent().getIntExtra("Segundos", 0);
         botao = (Button) findViewById(R.id.botao);
         contador = (TextView) findViewById(R.id.contador);
-        int e = getIntent().getIntExtra("Segundos", 0);
-        segundosRestantes = e;
-        formatarSegundos(e);
-        countDownTimer = new MyCountDownTimer(e * 1000, interval);
+        segundosRestantes = e + 1;
+        countDownTimer = new MyCountDownTimer(segundosRestantes * 1000, interval);
         countDownTimer.start();
     }
 
     public void onClick(View v) {
         //COMEÇANDO O COUTDOWNTIMER
-        int timeVal = segundosRestantes;
+        int timeVal = segundosRestantes + 1;
         //FAZER O COUTDOWN EM SEGUNDOS
         timeVal = timeVal * 1000;
-        //SE NÃO TIVER INICIADO FAZER ESSAS FUNCOES
-        if (!timerHasStarted) {
-            //iniciando o metodo
-            countDownTimer = new MyCountDownTimer(timeVal, interval);
-            //setando o valor em segundos
-            String.valueOf(timeVal / 1000);
-            //começando o metodo
-            countDownTimer.start();
-            //setando o timer para true, para fazer a comparação no if.
-            timerHasStarted = true;
-            //setando o texto do botao para parar
-            botao.setText("PARAR");
-        } else {
+        if (timerHasStarted) {
             //pausa o coutdowntimer
             countDownTimer.cancel();
             //coloca o timer pra false, para quando clicar no botao novamente ele entrar no if de cima
             timerHasStarted = false;
             //seta o botao para reiniciar
-            botao.setText("REINICIAR");
+            botao.setText("RETOMAR");
+        } else {
+            //começando o metodo
+            countDownTimer = new MyCountDownTimer(timeVal, interval);
+            countDownTimer.start();
+            //setando o timer para true, para fazer a comparação no if.
+            timerHasStarted = true;
+            //setando o texto do botao para parar
+            botao.setText("PARAR");
         }
     }
 
