@@ -58,23 +58,21 @@ public class Temporizador extends MainActivity {
             //seta o botao para reiniciar
             botao.setText("REINICIAR");
         }
-
-        //Ele vai atribuir o valor no text view, se for mais de 60, ele faz a conta e atribui ao minutos e/ou horas
-        public void formatarSegundos(int s) {
-            int horas = 0;
-            int minutos = 0;
-            int segundos = 0;
-
-            minutos = s / 60;
-            horas = minutos / 60;
-            segundos = s % 60;
-
-            //contador é o nome do textview 00:00:00, colocando o format e atribuindo valores
-            contador.setText(String.format("%02d:%02d:%02d", horas, minutos, segundos));
-        }
     }
 
+    //Ele vai atribuir o valor no text view, se for mais de 60, ele faz a conta e atribui ao minutos e/ou horas
+    public void formatarSegundos(int s) {
+        int horas = 0;
+        int minutos = 0;
+        int segundos = 0;
 
+        minutos = s / 60;
+        horas = minutos / 60;
+        segundos = s % 60;
+
+        //contador é o nome do textview 00:00:00, colocando o format e atribuindo valores
+        contador.setText(String.format("%02d:%02d:%02d", horas, minutos, segundos));
+    }
 
     //metodo do temporizador
     class MyCountDownTimer extends CountDownTimer {
